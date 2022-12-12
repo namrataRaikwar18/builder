@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --light-divider: #ecedf0;
+    --primary-color: #9f4dff;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.5rem;
+    font-family: sans-serif;
+}
+
+.divider {
+    border-bottom: 1px solid var(--light-divider);
+}
+
+.greyText {
+    color: #83889e;
+}
+
+.list {
+    list-style: none;
+}
+
+
+@media screen and (max-width:325px) {
+    html {
+        font-size: 40%;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    html {
+        font-size: 55%;
+    }
+
+}
