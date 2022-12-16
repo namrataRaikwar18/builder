@@ -7,6 +7,9 @@
 :root {
     --light-divider: #ecedf0;
     --primary-color: #9f4dff;
+    --main-color:#6c00ea;
+    --input-bg:#f6f6f6;
+    --input-color:#555;
 }
 
 html {
@@ -30,6 +33,19 @@ body {
     list-style: none;
 }
 
+.heading{
+    font-size: 1.8rem;
+}
+
+.btn{
+    border: none;
+    width: 140px;
+    background-color: transparent;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 @media screen and (max-width:325px) {
     html {

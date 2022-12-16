@@ -6,11 +6,13 @@
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--light-divider);
-    width: 220px;
+    width: 235px;
     height: 100vh;
     padding: 20px;
     background-color: #fff;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
 }
 
 .avatar {
@@ -77,7 +79,7 @@
     display: flex;
     flex-direction: column;
     padding-left: 2rem;
-    gap: 20rem;
+    gap: 19rem;
 }
 
 .accountModel {
