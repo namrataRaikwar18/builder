@@ -1,0 +1,48 @@
+.Head {
+    justify-content: left;
+    text-align: left;
+    margin: 5px;
+    padding: 20px;
+  }
+  .input {
+    display:column;
+    justify-content: center;
+    text-align: center;
+  
+  }
+  input[type='email'],
+  label {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 10;
+    height: 30px;
+    color: #fff;
+    display: block;
+    border:1px solid transparent
+  }
+  .input__box {
+    width: 20%;                
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 25px;
+    border: none;
+    transition: 0.2s;
+    box-shadow: inset 0 0 5px black;
+  }
+  .input_submit{
+    width: 20%;
+    height: 50px;
+    margin: 12px;
+    border-radius: 5px;
+    border:none;
+    font-size: 15px;
+    background-color: #2f74c0;
+   color: black;
+   transition: 0.2s all;
+   box-shadow: 0 0 10px black;
+  
+    
+   }
+   
+  
