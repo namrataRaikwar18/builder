@@ -49,7 +49,7 @@ const MyAccount = () => {
                   </h5>
                 </small>
               </span>
-              <input className="informationInput" type="text" />
+              <input className="informationInput" type="password" />
             </label>
           </div>
         </fieldset>

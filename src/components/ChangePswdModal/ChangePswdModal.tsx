@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 type ChangePswdModalProps = {
   chngPswdModal: boolean;
@@ -9,23 +10,56 @@ const ChangePswdModal = ({
   chngPswdModal,
   setChngPswdModal,
 }: ChangePswdModalProps) => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
   const closeModalHandler = () => {
     setChngPswdModal(!chngPswdModal);
   };
 
   return (
-    <main className="chPswdModalMain" onClick={closeModalHandler}>
-      <div className="chPswdModal" onClick={(e) => e.stopPropagation()}>
+    <main
+      className="chPswdModalMain"
+      data-testid="chPswdModalMain"
+      onClick={closeModalHandler}
+    >
+      <div
+        className="chPswdModal"
+        data-testid="chPswdModal"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h3>Change Password</h3>
         <label className="modalLabel" htmlFor="">
           <span>New Password</span>
-          <input placeholder="Password" type="text" className="modalInput" />
+          <div className="eyeIconInput">
+            <input
+              placeholder="Password"
+              type={showPassword ? "text" : "password"}
+              className="modalInput"
+            />
+            {showPassword ? (
+              <p
+                className="eyeIcon"
+                data-testid="showEyeIconTestid"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <AiFillEye />
+              </p>
+            ) : (
+              <p
+                className="eyeIcon"
+                data-testid="closeEyeIconTestId"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <AiFillEyeInvisible />
+              </p>
+            )}
+          </div>
         </label>
         <label className="modalLabel" htmlFor="">
-          <span>Repeat Password</span>
+          <span data-testid="repeatpswdtestid">Repeat Password</span>
           <input
             placeholder="Repeat Password"
-            type="text"
+            type={showPassword ? "text" : "password"}
             className="modalInput"
           />
         </label>
