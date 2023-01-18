@@ -1,0 +1,51 @@
+.navbarMain{
+    border-bottom: 1px solid var(--light-divider);
+    padding: 16px 25px;
+}
+
+.headingStart{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navbarDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.outlineStar{
+    color: #ec4899;
+    font-size: 18px;
+}
+
+.notificationBtn{
+    background-color: #f5222d;
+    color: white;
+    width: auto;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 12px;
+}
+
+.notificationDiv{
+    display:flex;
+    gap: 6px;
+}
+
+.avatarNotification{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navAvatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: var(--primary-color);
+    border: 1px solid black;
+}
