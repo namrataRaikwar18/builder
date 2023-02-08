@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { PNG } from '../../Assets';
 
 import './Home.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Sidebar } from '../sidebar/Sidebar';
 type DESC ={
     description: string,

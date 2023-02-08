@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
-import { Sidebar } from "../sidebar/Sidebar";
+import { Sidebar } from "../../components/sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [Email, setEmail] = useState("");
@@ -9,7 +9,7 @@ const Login = () => {
   // const [EmailList, setEmailList] = useState<string[]>([])
 
   const addTodo = () => {
-    let Data = {
+    const Data = {
       Email,
       Password,
     };
