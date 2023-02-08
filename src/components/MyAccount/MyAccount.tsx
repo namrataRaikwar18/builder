@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChangePswdModal } from "../ChangePswdModal/ChangePswdModal";
+import { Navbar } from "../Navbar/Navbar";
 import { Sidebar } from "../sidebar/Sidebar";
 import "./MyAccount.css";
 
@@ -9,6 +10,8 @@ const MyAccount = () => {
   return (
     <main className="myAccountMain">
       <Sidebar />
+      <section>
+      <Navbar />
       <div
         className={chngPswdModal ? "myAccountDiv hideOverflow" : "myAccountDiv"}
       >
@@ -49,7 +52,7 @@ const MyAccount = () => {
                   </h5>
                 </small>
               </span>
-              <input className="informationInput" type="text" />
+              <input className="informationInput" type="password" />
             </label>
           </div>
         </fieldset>
@@ -89,6 +92,7 @@ const MyAccount = () => {
           setChngPswdModal={setChngPswdModal}
         />
       ) : null}
+      </section>
     </main>
   );
 };

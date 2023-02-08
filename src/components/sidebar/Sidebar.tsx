@@ -33,9 +33,13 @@ const Sidebar = () => {
         </div>
       </div>
       <p className="divider"></p>
-      <footer className="sidebarFotter" onClick={showAccountModel}>
+      <footer
+        className="sidebarFotter"
+        data-testid="sidebarFotter"
+        onClick={showAccountModel}
+      >
         {accountModel ? (
-          <div className="accountModel">
+          <div className="accountModel" data-testid="accountModel">
             <ul className="list ">
               <li className="accountModelList">My Account</li>
               <p className="divider"></p>
