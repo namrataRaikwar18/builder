@@ -80,9 +80,6 @@
 .editButton {
     background-color: var(--main-color);
     color: white;
-    /* font-size: 17px; */
-    /* padding: 10px; */
-    /* border-radius: 4px; */
 
 }
 
@@ -130,7 +127,6 @@
 .modalInput {
     border: none;
     outline: none;
-    /* border-bottom: 2px solid var(--light-divider); */
     padding: 1rem;
     width: 100%;
     font-size: 1.7rem;

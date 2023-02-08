@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { BsBook } from "react-icons/bs";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import {MdWebStories} from 'react-icons/md';
+import {BiChalkboard} from 'react-icons/bi';
+
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -19,17 +25,30 @@ const Sidebar = () => {
         <div className="sidebarMiddlePart">
           <div className="projectDiv">
             <div className=" signalProject">
+            <div>
               <h3>Buildscard</h3>
               <small className="greyText">PEPtlk</small>
             </div>
+            </div>
             <p className="divider"></p>
             <ul className="sidebarList greyText">
-              <li className="eachSidebarList">Brief & Documents</li>
-              <li className="eachSidebarList">Stories</li>
-              <li className="eachSidebarList">Whiteboard</li>
+              <li className="eachSidebarList">
+                <BsBook className="icon"/>
+                Brief & Documents
+                </li>
+              <li className="eachSidebarList">
+                <MdWebStories className="icon"/>
+                Stories</li>
+              <li className="eachSidebarList">
+                <BiChalkboard className="icon"/>
+                Whiteboard</li>
             </ul>
           </div>
-          <h4 className="greyText eachSidebarList">Help</h4>
+          <h4 className="greyText eachSidebarList">
+
+          <FaRegQuestionCircle />
+            Help
+            </h4>
         </div>
       </div>
       <p className="divider"></p>
@@ -41,7 +60,10 @@ const Sidebar = () => {
         {accountModel ? (
           <div className="accountModel" data-testid="accountModel">
             <ul className="list ">
-              <li className="accountModelList">My Account</li>
+              <li className="accountModelList">
+
+              <Link to={'/'} className="myAccountLink link">My Account</Link>
+              </li>
               <p className="divider"></p>
               <li className="accountModelList">Log out</li>
             </ul>

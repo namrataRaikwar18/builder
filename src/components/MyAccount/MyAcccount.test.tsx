@@ -37,4 +37,12 @@ describe("testing myaccount", () => {
     fireEvent.click(chPswdModalMainElement);
     expect(repeatPasswordElement).not.toBeInTheDocument();
   });
+
+  // test.only('testing the edit button', ()=> {
+  //   render(<MyAccount />)
+  //   const edit = false
+  //   const editButtonElement = screen.getByText(/Edit/i)
+  //   fireEvent.click(editButtonElement)
+  //   expect(edit).toEqual(true);
+  // })
 });

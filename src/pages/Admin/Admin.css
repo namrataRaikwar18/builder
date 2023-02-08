@@ -1,0 +1,22 @@
+.adminMain{
+    display: flex;
+}
+
+.adminDiv{
+    width: 100%;
+}
+
+.adminSection{
+    padding: 4rem;
+}
+
+.adminHeading{
+    color: var(--main-color);
+}
+
+.adminHeader{
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    padding: 20px 0 20px 0;
+}
