@@ -7,11 +7,13 @@ import "./MyAccount.css";
 const MyAccount = () => {
   const [chngPswdModal, setChngPswdModal] = useState<boolean>(false);
   const [edit, setEdit] = useState<boolean>(false);
+  console.log(chngPswdModal)
   return (
     <main className="myAccountMain">
       <Sidebar />
       <section>
       <Navbar />
+      
       <div
         className={chngPswdModal ? "myAccountDiv hideOverflow" : "myAccountDiv"}
       >
@@ -86,13 +88,13 @@ const MyAccount = () => {
           Edit
         </button>
       </div>
+      </section>
       {chngPswdModal ? (
         <ChangePswdModal
           chngPswdModal={chngPswdModal}
           setChngPswdModal={setChngPswdModal}
         />
-      ) : null}
-      </section>
+       ) : null}
     </main>
   );
 };

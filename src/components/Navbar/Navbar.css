@@ -1,6 +1,7 @@
 .navbarMain{
     border-bottom: 1px solid var(--light-divider);
     padding: 16px 25px;
+    position: relative;
 }
 
 .headingStart{
@@ -48,4 +49,76 @@
     border-radius: 50%;
     color: var(--primary-color);
     border: 1px solid black;
+}
+
+/* NotificationBar styling */
+
+.notificationBarMain{
+    width: 100%;
+    background-color: rgb(175 178 192 / 50%);
+    height: 100%;
+    position: fixed;
+    overflow-y: hidden;
+    left: 0;
+    top: 0;
+}
+
+.notificationBar{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: white;
+    border: 1px solid var(--light-divider);
+}
+
+.selectFilter{
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid var(--light-divider);
+}
+
+.option{
+    border: 1px solid var(--light-divider);
+
+}
+
+.notificationHeader{
+    display: flex;
+    gap: 90px;
+    align-items: center;
+    padding: 15px;
+}
+
+.filterDiv{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+}
+
+.checkIcon{
+    border: 1px solid var(--light-divider);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.notificationMessage{
+    width: 29rem;
+    display: inline-block;
+}
+
+.projectNameDate{
+    display: flex;
+    justify-content: space-between;
+}
+
+.notificationMessageBox{
+    padding: 15px;
+}
+
+.developerName{
+    color: #1890ff;
+    font-weight: 600;
 }
