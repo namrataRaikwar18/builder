@@ -19,18 +19,19 @@ function App() {
   const { Email, Password } = JSON.parse(
     localStorage.getItem("userDetail") || "{}"
   );
+  console.log(Email,'email')
   return (
     <div className="App">
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/login" element={<Login />} />
-        <Route
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        {/* <Route
           path="/"
           element={Email ? <Home /> : <Navigate replace to={"/login"} />}
-        />
-        <Route path="/login" element={<Login />} />
+        /> */}
       </Routes>
     </div>
   );

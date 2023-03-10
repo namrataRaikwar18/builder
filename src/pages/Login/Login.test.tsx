@@ -28,7 +28,7 @@ describe("testing login page", () => {
   test("should navigate to home page when clicking on signIn button", () => {
     const signInButton = screen.getByRole("button", { name: /Sign In/i });
     fireEvent.click(signInButton);
-    expect(window.location.pathname).toBe("/");
+    expect(window.location.pathname).toBe("/home");
   });
 
   test("should present both email and password input", () => {

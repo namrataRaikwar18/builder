@@ -14,11 +14,14 @@ const Sidebar = () => {
     setAccountModel(!accountModel);
   };
 
-  const {Email, Password} = JSON.parse(localStorage.getItem('userDetail') || '{}');
+  const {Email} = JSON.parse(localStorage.getItem('userDetail') || '{}');
+  if(!Email){
+    navigate('/')
+  }
 
   const logoutHandler = () => {
     localStorage.removeItem('userDetail')
-    navigate('/login')
+    navigate('/')
   }
 
   return (

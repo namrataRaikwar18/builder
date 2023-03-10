@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import toast from "react-hot-toast";
 
@@ -16,9 +16,9 @@ const Login = () => {
   ) => {
     e.preventDefault();
 
-    if (Email === " " || Password === " " || Email === "" || Password === "") {
-      toast.error("Please fill the fields.");
-    }
+    // if (Email === " " || Password === " " || Email === "" || Password === "") {
+    //   toast.error("Please fill the fields.");
+    // }
     if (Email && Password) {
       //eslint-disable-next-line
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email)) {
@@ -28,10 +28,11 @@ const Login = () => {
             JSON.stringify({ Email, Password })
           );
           setregisterUser([...registerUser, { Email, Password }]);
+          navigate("/home");
+          toast.success("LoggedIn successfully");
           setEmail("");
           setPassword("");
-          toast.success("LoggedIn successfully");
-          navigate("/", { replace: true });
+    
         } else {
           toast.error("Password must be 6 character long. ");
         }
