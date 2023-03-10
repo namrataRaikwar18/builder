@@ -1,9 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { MyAccount } from "./MyAccount";
 
 describe("testing myaccount", () => {
   test("should render changepassword modal when click on changepassword", () => {
-    render(<MyAccount />);
+    render(<BrowserRouter><MyAccount /></BrowserRouter> );
     const headingElement = screen.getByRole("heading", {
       name: "Change password",
     });
@@ -13,7 +14,7 @@ describe("testing myaccount", () => {
   });
 
   test("should close the modal when clicking on close button", async () => {
-    render(<MyAccount />);
+    render(<BrowserRouter><MyAccount /></BrowserRouter>);
     const headingElement = screen.getByRole("heading", {
       name: "Change password",
     });
@@ -26,7 +27,7 @@ describe("testing myaccount", () => {
   });
 
   test("should close the modal when clicking outside the modal too", () => {
-    render(<MyAccount />);
+    render(<BrowserRouter><MyAccount /></BrowserRouter>);
     const headingElement = screen.getByRole("heading", {
       name: "Change password",
     });
@@ -38,8 +39,8 @@ describe("testing myaccount", () => {
     expect(repeatPasswordElement).not.toBeInTheDocument();
   });
 
-  // test.only('testing the edit button', ()=> {
-  //   render(<MyAccount />)
+  // test('testing the edit button', ()=> {
+  //   render(<BrowserRouter><MyAccount /></BrowserRouter>)
   //   const edit = false
   //   const editButtonElement = screen.getByText(/Edit/i)
   //   fireEvent.click(editButtonElement)

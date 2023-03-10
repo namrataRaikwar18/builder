@@ -1,34 +1,39 @@
-import React from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import './App.css';
-import Home from './components/Cards/Home';
-import Login from './pages/Login/Login';
-import { Sidebar } from './components/sidebar/Sidebar';
-import Stories from './components/Stories/Stories';
-import Todo from './components/Todo';
-import { Admin } from './pages/Admin/Admin';
-import { MyAccount } from './components/MyAccount/MyAccount';
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home/Home";
+import { Login } from "./pages/Login/Login";
+import { Sidebar } from "./components/sidebar/Sidebar";
+import Stories from "./components/Stories/Stories";
+import Todo from "./components/Todo";
+import { Admin } from "./pages/Admin/Admin";
+import { MyAccount } from "./components/MyAccount/MyAccount";
+import { Toaster } from "react-hot-toast";
 
 function App() {
- type property = {
-    height?: number,
-    bgcolor?: any,
-    progress?: any,
-}
+  type property = {
+    height?: number;
+    bgcolor?: any;
+    progress?: any;
+  };
+  const { Email, Password } = JSON.parse(
+    localStorage.getItem("userDetail") || "{}"
+  );
   return (
     <div className="App">
+      <Toaster position="top-right" reverseOrder={false} />
       <Routes>
-        <Route path='/myaccount' element={<MyAccount />}/>
-        <Route path='/admin' element={<Admin />}/>
-         <Route path="/" element={<Home />} />
-         <Route path='/login' element={<Login/>}/>
+        <Route path="/myaccount" element={<MyAccount />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={Email ? <Home /> : <Navigate replace to={"/login"} />}
+        />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
-
   );
 }
 
 export default App;
-
-
-
