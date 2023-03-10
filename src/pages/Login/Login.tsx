@@ -30,8 +30,8 @@ const Login = () => {
           setregisterUser([...registerUser, { Email, Password }]);
           setEmail("");
           setPassword("");
-          toast.success("LoggedIn successfully");
           navigate("/", { replace: true });
+          toast.success("LoggedIn successfully");
         } else {
           toast.error("Password must be 6 character long. ");
         }
