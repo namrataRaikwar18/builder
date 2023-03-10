@@ -37,6 +37,7 @@ body {
     font-size: 1.8rem;
 }
 
+
 .btn{
     border: none;
     width: 140px;
@@ -45,6 +46,11 @@ body {
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.primaryBtn{
+    background-color: var(--main-color);
+    color: white;
 }
 
 .icon{

@@ -77,12 +77,6 @@
     padding-top: 2rem;
 }
 
-.editButton {
-    background-color: var(--main-color);
-    color: white;
-
-}
-
 .notify,
 .myAccountHeading {
     width: inherit;
@@ -158,7 +152,7 @@
     pointer-events: visible;
 }
 
-.eyeIconInput{
+.eyeIconInput {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -166,7 +160,7 @@
     border-bottom: 2px solid var(--light-divider);
 }
 
-.eyeIcon{
+.eyeIcon {
     font-size: 18px;
     cursor: pointer;
 }

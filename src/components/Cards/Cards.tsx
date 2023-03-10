@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const CourseCard = styled(Card)`
   border-radius: 10px;
   .ant-card-body {
-    padding: 10px !important;
+    // padding: 10px !important;
     display: flex;
     flex-wrap:wrap;
     width:100px;
@@ -21,12 +21,10 @@ export const CourseCard = styled(Card)`
 export const ArticleCard = styled(Card)`
   border-radius: 10px;
   .ant-card-body {
-    padding: 10px !important;
+    padding: 0;
     display: flex;
-    width: 250px;
     height:300px;
-    // justify-content: center;
-    align-items: left;
+    justify-content: space-between;
     flex-direction: column;
 
   }

@@ -1,82 +1,89 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Login.css";
-import { Sidebar } from "../../components/sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
+import toast from "react-hot-toast";
+
 const Login = () => {
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState<string>("");
+  const [Password, setPassword] = useState<string>("");
+  const { registerUser, setregisterUser } = useAuth();
+
   const navigate = useNavigate();
-  // const [EmailList, setEmailList] = useState<string[]>([])
+  
+  const signInHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
 
-  const addTodo = () => {
-    const Data = {
-      Email,
-      Password,
-    };
-    // setEmailList([...EmailList,Email])
-    // setEmailList([...EmailList,Password])
-
-    localStorage.setItem("Data", JSON.stringify(Data));
-    setEmail("");
-    setPassword("");
+    if (Email === " " || Password === " " || Email === "" || Password === "") {
+      toast.error("Please fill the fields.");
+    }
+    if (Email && Password) {
+      //eslint-disable-next-line
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email)) {
+        if (Password.length >= 6) {
+          localStorage.setItem(
+            "userDetail",
+            JSON.stringify({ Email, Password })
+          );
+          setregisterUser([...registerUser, { Email, Password }]);
+          setEmail("");
+          setPassword("");
+          toast.success("LoggedIn successfully");
+          navigate("/", { replace: true });
+        } else {
+          toast.error("Password must be 6 character long. ");
+        }
+      } else {
+        toast.error("Invalid Email.");
+      }
+    }
   };
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-  const handlePassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
+  localStorage.setItem("registeredUser", JSON.stringify(registerUser));
 
   return (
-    <form action="Sidebar">
-      
-      <div className="Head">
-        <div>
-          <h1 style={{ color: "purple" }}>Builder TRACKER</h1>
-        </div>
-        <div style={{ margin: "30px 0px" }}>
-          <h2>Sign in to tracker App</h2>
-        </div>
-        <div>
-          <div style={{ margin: "10px" }}>
-            <h3>Email:</h3>
-            <input
-              name="email"
-              type="email"
-              placeholder="Enter Email"
-              className="input__box"
-              id="email"
-              value={Email}
-              onChange={handleEmailChange}
-            />
-          </div>
+    <main className="loginMain">
+      <img
+        className="loginPageLogo"
+        src="https://tracker.builder.ai/assets/images/trackerLogo.png"
+        alt="logo"
+      />
+      <h2>Sign in to Builder Tracker</h2>
+      <form action="Sidebar">
+        <div className="greyText loginDiv">
+          <label htmlFor="email">Email address</label>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="informationInput"
+            id="email"
+            value={Email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>  setEmail(e.target.value)}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={Password}
+            id='password'
+            className="informationInput"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+          />
 
-          <div style={{ margin: "10px" }}>
-            <h3>Password:</h3>
-
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={Password}
-              className="input__box"
-              onChange={handlePassChange}
-            />
-          </div>
-          <div>
-            <button
-              onClick={() => navigate("/")}
-              className="input_submit"
-              type="submit"
-            >
-              {" "}
-              Sign In
-            </button>
-          </div>
+          <button
+            onClick={(e) => signInHandler(e)}
+            className="btn primaryBtn"
+            type="submit"
+          >
+            Sign In
+          </button>
         </div>
-      </div>
-    </form>
+      </form>
+    </main>
   );
 };
 
-export default Login;
+export { Login };

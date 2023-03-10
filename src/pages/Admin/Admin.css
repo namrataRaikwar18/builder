@@ -20,3 +20,10 @@
     width: inherit;
     padding: 20px 0 20px 0;
 }
+
+.emailList{
+    display: flex;
+    /* border: 1px solid red; */
+    flex-direction: column;
+    gap: 10px;
+}
