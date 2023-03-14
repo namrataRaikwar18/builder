@@ -1,64 +1,69 @@
 import React, { useState } from "react";
 import { BsBook } from "react-icons/bs";
 import { FaRegQuestionCircle } from "react-icons/fa";
-import {MdWebStories} from 'react-icons/md';
-import {BiChalkboard} from 'react-icons/bi';
+import { MdWebStories } from "react-icons/md";
+import { BiChalkboard } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
   const [accountModel, setAccountModel] = useState<boolean>(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const showAccountModel = () => {
     setAccountModel(!accountModel);
   };
 
-  const {Email} = JSON.parse(localStorage.getItem('userDetail') || '{}');
-  if(!Email){
-    navigate('/')
+  const { Email } = JSON.parse(localStorage.getItem("userDetail") || "{}");
+  if (!Email) {
+    navigate("/");
   }
 
   const logoutHandler = () => {
-    localStorage.removeItem('userDetail')
-    navigate('/')
-  }
+    localStorage.removeItem("userDetail");
+    navigate("/");
+  };
 
   return (
     <div className="sidebar">
       <div className="">
         <img
-          className="logo"
+          className="logo cursorPointer"
           src="https://tracker.builder.ai/assets/images/trackerLogo.png"
           alt="logo"
+          onClick={() => navigate("/home")}
         />
         <div className="sidebarMiddlePart">
           <div className="projectDiv">
             <div className=" signalProject">
-            <div>
-              <h3>Buildscard</h3>
-              <small className="greyText">PEPtlk</small>
-            </div>
+              <div>
+                <h3>Buildscard</h3>
+                <small className="greyText">PEPtlk</small>
+              </div>
             </div>
             <p className="divider"></p>
             <ul className="sidebarList greyText">
               <li className="eachSidebarList">
-                <BsBook className="icon"/>
+                <BsBook className="icon" />
                 Brief & Documents
-                </li>
+              </li>
+              <li
+                className="eachSidebarList"
+                onClick={() => navigate("/projects")}
+              >
+                <MdWebStories className="icon" />
+                Stories
+              </li>
               <li className="eachSidebarList">
-                <MdWebStories className="icon"/>
-                Stories</li>
-              <li className="eachSidebarList">
-                <BiChalkboard className="icon"/>
-                Whiteboard</li>
+                <BiChalkboard className="icon" />
+                Whiteboard
+              </li>
             </ul>
           </div>
           <h4 className="greyText eachSidebarList">
-
-          <FaRegQuestionCircle />
+            <FaRegQuestionCircle />
             Help
-            </h4>
+          </h4>
         </div>
       </div>
       <p className="divider"></p>
@@ -71,10 +76,14 @@ const Sidebar = () => {
           <div className="accountModel" data-testid="accountModel">
             <ul className="list ">
               <li className="accountModelList">
-              <Link to={'/myaccount'} className="link">My Account</Link>
+                <Link to={"/myaccount"} className="link">
+                  My Account
+                </Link>
               </li>
               <p className="divider"></p>
-              <li className="accountModelList" onClick={logoutHandler}>Log out</li>
+              <li className="accountModelList" onClick={logoutHandler}>
+                Log out
+              </li>
             </ul>
           </div>
         ) : null}
@@ -82,9 +91,7 @@ const Sidebar = () => {
           <p className="avatar">{Email?.[0].toUpperCase()}</p>
           <div className="nameAndEmail">
             <p>{Email?.[0]}</p>
-            <small className="greyText useremail">
-              {Email}
-            </small>
+            <small className="greyText useremail">{Email}</small>
           </div>
         </div>
       </footer>

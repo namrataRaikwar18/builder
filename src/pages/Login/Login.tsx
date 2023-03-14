@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import toast from "react-hot-toast";
 
@@ -27,11 +27,9 @@ const Login = () => {
             "userDetail",
             JSON.stringify({ Email, Password })
           );
-          setregisterUser([...registerUser, { Email, Password }]);
-          console.log(window.location.pathname,'login')
+          // setregisterUser([...registerUser, { Email, Password }]);
           toast.success("LoggedIn successfully");
           navigate("/home");
-          console.log(window.location.pathname,'afer')
           setEmail("");
           setPassword("");
     

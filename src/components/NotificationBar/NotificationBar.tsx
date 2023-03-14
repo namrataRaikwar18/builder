@@ -7,7 +7,6 @@ type NotificationBarType = {
 };
 
 const NotificationBar = ({
-  notificationBar,
   setnotificationBar,
 }: NotificationBarType) => {
   const date = new Date();
