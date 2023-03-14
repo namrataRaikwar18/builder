@@ -1,0 +1,20 @@
+.loginMain {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.loginPageLogo {
+  width: 20rem;
+  max-height: 70px;
+}
+
+.loginDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}

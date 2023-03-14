@@ -37,6 +37,7 @@ body {
     font-size: 1.8rem;
 }
 
+
 .btn{
     border: none;
     width: 140px;
@@ -47,8 +48,23 @@ body {
     cursor: pointer;
 }
 
+.primaryBtn{
+    background-color: var(--main-color);
+    color: white;
+}
+
 .icon{
     font-size: 19px;
+}
+
+.link{
+    color: black;
+    text-decoration: none;
+    
+}
+
+.padding_2rem{
+    padding: 2rem;
 }
 
 @media screen and (max-width:325px) {
@@ -64,3 +80,5 @@ body {
     }
 
 }
+
+

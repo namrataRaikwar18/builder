@@ -1,12 +1,28 @@
 import React, { useState } from "react";
+import { BsBook } from "react-icons/bs";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import {MdWebStories} from 'react-icons/md';
+import {BiChalkboard} from 'react-icons/bi';
+import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
   const [accountModel, setAccountModel] = useState<boolean>(false);
+  const navigate = useNavigate()
 
   const showAccountModel = () => {
     setAccountModel(!accountModel);
   };
+
+  const {Email} = JSON.parse(localStorage.getItem('userDetail') || '{}');
+  if(!Email){
+    navigate('/')
+  }
+
+  const logoutHandler = () => {
+    localStorage.removeItem('userDetail')
+    navigate('/')
+  }
 
   return (
     <div className="sidebar">
@@ -19,17 +35,30 @@ const Sidebar = () => {
         <div className="sidebarMiddlePart">
           <div className="projectDiv">
             <div className=" signalProject">
+            <div>
               <h3>Buildscard</h3>
               <small className="greyText">PEPtlk</small>
             </div>
+            </div>
             <p className="divider"></p>
             <ul className="sidebarList greyText">
-              <li className="eachSidebarList">Brief & Documents</li>
-              <li className="eachSidebarList">Stories</li>
-              <li className="eachSidebarList">Whiteboard</li>
+              <li className="eachSidebarList">
+                <BsBook className="icon"/>
+                Brief & Documents
+                </li>
+              <li className="eachSidebarList">
+                <MdWebStories className="icon"/>
+                Stories</li>
+              <li className="eachSidebarList">
+                <BiChalkboard className="icon"/>
+                Whiteboard</li>
             </ul>
           </div>
-          <h4 className="greyText eachSidebarList">Help</h4>
+          <h4 className="greyText eachSidebarList">
+
+          <FaRegQuestionCircle />
+            Help
+            </h4>
         </div>
       </div>
       <p className="divider"></p>
@@ -41,18 +70,20 @@ const Sidebar = () => {
         {accountModel ? (
           <div className="accountModel" data-testid="accountModel">
             <ul className="list ">
-              <li className="accountModelList">My Account</li>
+              <li className="accountModelList">
+              <Link to={'/myaccount'} className="link">My Account</Link>
+              </li>
               <p className="divider"></p>
-              <li className="accountModelList">Log out</li>
+              <li className="accountModelList" onClick={logoutHandler}>Log out</li>
             </ul>
           </div>
         ) : null}
         <div className="profileDiv">
-          <p className="avatar">A</p>
+          <p className="avatar">{Email?.[0].toUpperCase()}</p>
           <div className="nameAndEmail">
-            <p>anand pathak</p>
+            <p>{Email?.[0]}</p>
             <small className="greyText useremail">
-              anand.pathak@pixoatic.com
+              {Email}
             </small>
           </div>
         </div>
