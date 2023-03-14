@@ -31,7 +31,8 @@ function App() {
         {/* <Route
           path="/"
           element={Email ? <Home /> : <Navigate replace to={"/login"} />}
-        /> */}
+        /> */}            <Route path='/projects' element={<Stories/>}/>
+
       </Routes>
     </div>
   );
