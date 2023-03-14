@@ -16,9 +16,9 @@ const Login = () => {
   ) => {
     e.preventDefault();
 
-    // if (Email === " " || Password === " " || Email === "" || Password === "") {
-    //   toast.error("Please fill the fields.");
-    // }
+    if (Email === " " || Password === " " || Email === "" || Password === "") {
+      toast.error("Please fill the fields.");
+    }
     if (Email && Password) {
       //eslint-disable-next-line
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email)) {
@@ -28,8 +28,10 @@ const Login = () => {
             JSON.stringify({ Email, Password })
           );
           setregisterUser([...registerUser, { Email, Password }]);
-          navigate("/home");
+          console.log(window.location.pathname,'login')
           toast.success("LoggedIn successfully");
+          navigate("/home");
+          console.log(window.location.pathname,'afer')
           setEmail("");
           setPassword("");
     
