@@ -27,7 +27,9 @@ const Login = () => {
             "userDetail",
             JSON.stringify({ Email, Password })
           );
-          setregisterUser([...registerUser, { Email, Password }]);
+          // setregisterUser([...registerUser, { Email, Password }]);
+          toast.success("LoggedIn successfully");
+          navigate("/home");
           setEmail("");
           setPassword("");
           navigate("/", { replace: true });

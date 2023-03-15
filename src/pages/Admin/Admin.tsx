@@ -5,7 +5,7 @@ import './Admin.css';
 
 const Admin = () => {
 
-  const usersFromLocalstorage = JSON.parse(localStorage.getItem('registeredUser') || '[]')
+  // const usersFromLocalstorage = JSON.parse(localStorage.getItem('registeredUser') || '[]')
   const {Email} = JSON.parse(localStorage.getItem('userDetail') || '{}');
 
 

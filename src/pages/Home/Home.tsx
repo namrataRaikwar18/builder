@@ -17,7 +17,7 @@ export const ArticleSection = ({ description, img, stories }: DESC) => {
 
   return (
     <div className="cardDiv">
-      <ArticleCard hoverable onClick={() => navigate("/detail")}>
+      <ArticleCard hoverable onClick={() => navigate("/projects")}>
         <div className="cardImg">
           <img src={img} alt="" />
         </div>

@@ -2,14 +2,15 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* overflow-x: hidden; */
 }
 
 :root {
     --light-divider: #ecedf0;
     --primary-color: #9f4dff;
-    --main-color:#6c00ea;
-    --input-bg:#f6f6f6;
-    --input-color:#555;
+    --main-color: #6c00ea;
+    --input-bg: #f6f6f6;
+    --input-color: #555;
 }
 
 html {
@@ -33,12 +34,12 @@ body {
     list-style: none;
 }
 
-.heading{
+.heading {
     font-size: 1.8rem;
 }
 
 
-.btn{
+.btn {
     border: none;
     width: 140px;
     background-color: transparent;
@@ -48,23 +49,27 @@ body {
     cursor: pointer;
 }
 
-.primaryBtn{
+.primaryBtn {
     background-color: var(--main-color);
     color: white;
 }
 
-.icon{
+.icon {
     font-size: 19px;
 }
 
-.link{
+.link {
     color: black;
     text-decoration: none;
-    
+
 }
 
-.padding_2rem{
+.padding_2rem {
     padding: 2rem;
+}
+
+.cursorPointer {
+    cursor: pointer;
 }
 
 @media screen and (max-width:325px) {
@@ -80,5 +85,3 @@ body {
     }
 
 }
-
-
