@@ -32,7 +32,8 @@ const Login = () => {
           navigate("/home");
           setEmail("");
           setPassword("");
-    
+          navigate("/", { replace: true });
+          toast.success("LoggedIn successfully");
         } else {
           toast.error("Password must be 6 character long. ");
         }
