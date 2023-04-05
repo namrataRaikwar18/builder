@@ -1,7 +1,7 @@
 import React from "react";
 import ReadMore from "../../Assets/ReadMore/ReadMore";
 import "./Stories.css";
-import { Progress } from "antd";
+// import { Progress } from "antd";
 import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
@@ -12,8 +12,11 @@ import {
 import { GoTasklist } from "react-icons/go";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Navbar } from "../Navbar/Navbar";
-
+import { Link, useNavigate } from "react-router-dom";
+import { StoryPopup } from "../StoryPopup/StoryPopup";
 const Stories = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="story_flex">
       <Sidebar />
@@ -22,17 +25,18 @@ const Stories = () => {
         <div className="flex">
           <div className="storyBoard-title">Stories</div>
           <div className="storyBoardSearch input ">
-            <div className="searchArea-block">
-              <SearchOutlined className="searchArea-blocks" />
-            </div>
-          </div>
           <div className="trackedHour-info">
             <span className="iconb-info">
               <FilterOutlined />
             </span>
             <span className="trackedHour-detail"> 4 Filters</span>
           </div>
-          <div className="trackedHour-info">
+            {/* <div className="searchArea-block">
+              <SearchOutlined className="searchArea-blocks" />
+            </div> */}
+          </div>
+          
+          {/* <div className="trackedHour-info">
             <span className="iconb-info">
               <ArrowLeftOutlined />
             </span>
@@ -55,7 +59,7 @@ const Stories = () => {
           </div>
           <a className="ideButton input" href="">
             <GoTasklist /> Go to Buildcard IDE
-          </a>
+          </a> */}
         </div>
         <div className="storyBoard-columnWrapper">
           <div className="storyBoard">
@@ -88,7 +92,7 @@ const Stories = () => {
 
                         <ReadMore />
                         <div>
-                          <Progress percent={35} strokeColor="#35C83B" />
+                          {/* <Progress percent={35} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>
@@ -107,7 +111,7 @@ const Stories = () => {
 
                         <ReadMore />
                         <div>
-                          <Progress percent={90} strokeColor="#35C83B" />
+                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>
@@ -123,10 +127,13 @@ const Stories = () => {
                       </div>
                       <div className="epic-details">
                         <div className="title">Bulk Uplpoading</div>
+                        <li  onClick={() => navigate("/storypopup")}>
 
                         <ReadMore />
+                        </li>
+                        
                         <div>
-                          <Progress percent={90} strokeColor="#35C83B" />
+                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>
@@ -152,7 +159,7 @@ const Stories = () => {
 
                         <ReadMore />
                         <div>
-                          <Progress percent={90} strokeColor="#35C83B" />
+                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>
@@ -171,7 +178,7 @@ const Stories = () => {
 
                         <ReadMore />
                         <div>
-                          <Progress percent={90} strokeColor="#35C83B" />
+                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>
@@ -202,7 +209,7 @@ const Stories = () => {
                           <span className="moreOption">more</span>
                         </div>
                         <div>
-                          <Progress />
+                          {/* <Progress /> */}
                         </div>
                       </div>
                     </div>
@@ -243,7 +250,7 @@ const Stories = () => {
 
                         <ReadMore />
                         <div>
-                          <Progress percent={90} strokeColor="#35C83B" />
+                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>
@@ -267,7 +274,7 @@ const Stories = () => {
                 </div> */}
                         <ReadMore />
                         <div>
-                          <Progress percent={90} strokeColor="#35C83B" />
+                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>
@@ -286,7 +293,7 @@ const Stories = () => {
 
                         <ReadMore />
                         <div>
-                          <Progress percent={90} strokeColor="#35C83B" />
+                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
                         </div>
                       </div>
                     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ArticleCard } from "../../components/Cards/Cards";
+// import { ArticleCard } from "../../components/Cards/Cards";
 import { useNavigate } from "react-router-dom";
 import { PNG } from "../../Assets";
 
@@ -17,22 +17,23 @@ export const ArticleSection = ({ description, img, stories }: DESC) => {
 
   return (
     <div className="cardDiv">
-      <ArticleCard hoverable onClick={() => navigate("/projects")}>
+      <div className="card"  onClick={() => navigate("/projects")}>
         <div className="cardImg">
           <img src={img} alt="" />
         </div>
         <div className="cardDesc">
-          <div>
+          
             <p className="avatar">A</p>
-          </div>
-          <div className="cardNameWithDivider">
+            <div className="cardNameWithDivider">
             <p className="divider"></p>
             <div className="cardName">{description}</div>
           </div>
-          <div className="greyText">{stories}</div>
+          <div className="greyText greycardName">{stories}</div>
+          
+          </div>
         </div>
-      </ArticleCard>
-    </div>
+      
+     </div>
   );
 };
 
