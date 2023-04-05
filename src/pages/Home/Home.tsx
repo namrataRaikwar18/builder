@@ -1,5 +1,5 @@
 import React from "react";
-import { ArticleCard } from "../../components/Cards/Cards";
+// import { ArticleCard } from "../../components/Cards/Cards";
 import { useNavigate } from "react-router-dom";
 import { PNG } from "../../Assets";
 import "./Home.css";
@@ -23,17 +23,17 @@ export const ArticleSection = ({ description, img, stories }: DESC) => {
           <img src={img} alt="logo" />
         </div>
         <div className="cardDesc">
-          <div>
+          
             <p className="avatar">A</p>
-          </div>
-          <div className="cardNameWithDivider">
+            <div className="cardNameWithDivider">
             <p className="divider"></p>
             <div className="cardName">{description}</div>
           </div>
-          <div className="greyText">{stories}</div>
-        </div>
-      </ArticleCard>
-    </div>
+          <div className="greyText greycardName">{stories}</div>
+          
+          </div>
+      
+     </div>
   );
 };
 

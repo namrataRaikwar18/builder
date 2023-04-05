@@ -52,7 +52,10 @@ body {
     background-color: var(--main-color);
     color: white;
 }
-
+.display {
+    display:flex;
+    justify-content: center;
+}
 .icon {
     font-size: 19px;
 }

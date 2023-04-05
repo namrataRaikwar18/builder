@@ -40,6 +40,7 @@ const Login = () => {
           localStorage.setItem("userDetail", JSON.stringify(userData));
           registerUserHandler(email);
           navigate("/home");
+
           toast.success("LoggedIn successfully");
         } else {
           toast.error("Password must be 6 character long.");
