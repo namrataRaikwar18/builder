@@ -1,10 +1,25 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { MyAccount } from "./MyAccount";
+import { authContext } from "../../context/authContext";
+
+beforeEach(() => {
+  render(
+    <BrowserRouter>
+      <authContext.Provider
+        value={{
+          userData: { email: "", password: "" },
+          setUserData: jest.fn(),
+        }}
+      >
+        <MyAccount />
+      </authContext.Provider>
+    </BrowserRouter>
+  );
+});
 
 describe("testing myaccount", () => {
   test("should render changepassword modal when click on changepassword", () => {
-    render(<BrowserRouter><MyAccount /></BrowserRouter> );
     const headingElement = screen.getByRole("heading", {
       name: "Change password",
     });
@@ -14,7 +29,6 @@ describe("testing myaccount", () => {
   });
 
   test("should close the modal when clicking on close button", async () => {
-    render(<BrowserRouter><MyAccount /></BrowserRouter>);
     const headingElement = screen.getByRole("heading", {
       name: "Change password",
     });
@@ -27,7 +41,6 @@ describe("testing myaccount", () => {
   });
 
   test("should close the modal when clicking outside the modal too", () => {
-    render(<BrowserRouter><MyAccount /></BrowserRouter>);
     const headingElement = screen.getByRole("heading", {
       name: "Change password",
     });

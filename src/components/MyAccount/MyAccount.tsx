@@ -12,7 +12,6 @@ const MyAccount = () => {
     <main className="myAccountMain">
       <Sidebar />
       <section>
-        <Navbar />
         <div
           className={
             chngPswdModal ? "myAccountDiv hideOverflow" : "myAccountDiv"
@@ -24,7 +23,7 @@ const MyAccount = () => {
           </div>
           <fieldset className={edit ? "informations editMode" : "informations"}>
             <legend>
-              <p className="heading">General Information</p>
+              <p className="headingSize">General Information</p>
             </legend>
             <div className="inputDiv">
               <label className="labels">
@@ -65,7 +64,7 @@ const MyAccount = () => {
             }
           >
             <legend>
-              <p className="heading">Notifications</p>
+              <p className="headingSize">Notifications</p>
             </legend>
             <div>
               <h4>Notify when my stories are </h4>

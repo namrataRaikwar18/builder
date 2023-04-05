@@ -1,72 +1,81 @@
-import React, { useState } from "react";
-import { BsBook } from "react-icons/bs";
-import { FaRegQuestionCircle } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
 import { MdWebStories } from "react-icons/md";
-import { BiChalkboard } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+  NavLink,
+  useParams,
+} from "react-router-dom";
 import "./Sidebar.css";
+import { useAuth } from "../../context/authContext";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
   const [accountModel, setAccountModel] = useState<boolean>(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { userData, setUserData } = useAuth();
+  const { email } = userData;
+  const { projectId } = useParams();
 
   const showAccountModel = () => {
     setAccountModel(!accountModel);
   };
 
-  const { Email } = JSON.parse(localStorage.getItem("userDetail") || "{}");
-  if (!Email) {
-    navigate("/");
-  }
+  const userDetailFromLocal = JSON.parse(
+    localStorage.getItem("userDetail") || "{}"
+  );
+
+  useEffect(() => {
+    if (!userDetailFromLocal.email) {
+      navigate("/");
+    }
+  }, []);
 
   const logoutHandler = () => {
     localStorage.removeItem("userDetail");
+    setUserData({ email: "", password: "" });
     navigate("/");
+    toast.success("Loggedout Successfully.");
   };
 
   return (
     <div className="sidebar">
       <div className="">
-        <img
+        {/* <img
           className="logo cursorPointer"
           src="https://tracker.builder.ai/assets/images/trackerLogo.png"
           alt="logo"
           onClick={() => navigate("/home")}
-        />
+        /> */}
+        <h1 className="logo cursorPointer" onClick={() => navigate("/home")}>
+          Pixoatic
+        </h1>
         <div className="sidebarMiddlePart">
           <div className="projectDiv">
             <div className=" signalProject">
               <div>
-                <h3>Buildscard</h3>
-                <small className="greyText">PEPtlk</small>
+                <h3 className="cursorPointer" onClick={() => navigate("/home")}>
+                  Buildscard
+                </h3>
               </div>
             </div>
             <p className="divider"></p>
             <ul className="sidebarList greyText">
-              <li className="eachSidebarList">
-                <BsBook className="icon" />
-                Brief & Documents
-              </li>
-              <li
-                className="eachSidebarList"
-                onClick={() => navigate("/projects")}
-              >
-                <MdWebStories className="icon" />
-                Stories
-              </li>
-              <li className="eachSidebarList">
-                <BiChalkboard className="icon" />
-                Whiteboard
-              </li>
+              {location.pathname === `/projects/${projectId}` ? (
+                <NavLink
+                  className="eachSidebarList list greyText"
+                  to={`/projects/${projectId}`}
+                >
+                  <MdWebStories className="icon" />
+                  Stories
+                </NavLink>
+              ) : null}
             </ul>
           </div>
-          <h4 className="greyText eachSidebarList">
-            <FaRegQuestionCircle />
-            Help
-          </h4>
         </div>
       </div>
-      <p className="divider"></p>
       <footer
         className="sidebarFotter"
         data-testid="sidebarFotter"
@@ -81,17 +90,17 @@ const Sidebar = () => {
                 </Link>
               </li>
               <p className="divider"></p>
-              <li className="accountModelList" onClick={logoutHandler}>
+              <li className="accountModelList" onClick={() => logoutHandler()}>
                 Log out
               </li>
             </ul>
           </div>
         ) : null}
         <div className="profileDiv">
-          <p className="avatar">{Email?.[0].toUpperCase()}</p>
+          <p className="avatar">{email ? email[0].toUpperCase() : null}</p>
           <div className="nameAndEmail">
-            <p>{Email?.[0]}</p>
-            <small className="greyText useremail">{Email}</small>
+            <p>{email ? email[0] : null}</p>
+            <small className="greyText useremail">{email ? email : null}</small>
           </div>
         </div>
       </footer>

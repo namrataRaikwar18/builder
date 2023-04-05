@@ -23,7 +23,33 @@
 
 .emailList{
     display: flex;
-    /* border: 1px solid red; */
     flex-direction: column;
     gap: 10px;
+}
+
+.todoAdminDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* createTodoModal styling */
+
+.createTodoModal{
+    /* border: 1px solid red; */
+    gap: 14px;
+    padding: 50px;
+    /* width: 400px; */
+    align-items: center;
+    background-color: white;
+    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    /* height: 250px; */
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;    transform: translate(-50%, -50%);
+
+
+
 }

@@ -1,20 +1,23 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import { AiOutlineStar, AiOutlineBell } from "react-icons/ai";
-import {NotificationBar} from '../NotificationBar/NotificationBar';
+import { NotificationBar } from "../NotificationBar/NotificationBar";
+import { projectData } from "../../pages/Home/Home";
+import { useParams } from "react-router";
 
 const Navbar = () => {
-
-  const [notificationBar, setnotificationBar] = useState<boolean>(false)
+  const [notificationBar, setnotificationBar] = useState<boolean>(false);
+  const { projectId } = useParams();
+  const singleProject = projectData.find(({ id }) => id === projectId);
 
   return (
     <main className="navbarMain greyText">
       <div className="navbarDiv">
-        <p className="headingStart">
-          Buildcards / CarShip.app
+        <p className="headingStart" data-testid="buildCardProject">
+          Buildcards / {singleProject?.description}
           <AiOutlineStar className="outlineStar icon" />
         </p>
-        <div className="avatarNotification">
+        {/* <div className="avatarNotification">
           <p className="navAvatar">A</p>
           <div className="notificationDiv">
             <AiOutlineBell className="icon"  onClick={() => setnotificationBar(!notificationBar)} />
@@ -26,9 +29,14 @@ const Navbar = () => {
               99
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
-      {notificationBar ? <NotificationBar  notificationBar={notificationBar} setnotificationBar={setnotificationBar}/> : null} 
+      {notificationBar ? (
+        <NotificationBar
+          notificationBar={notificationBar}
+          setnotificationBar={setnotificationBar}
+        />
+      ) : null}
     </main>
   );
 };
