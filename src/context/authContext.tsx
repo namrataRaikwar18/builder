@@ -1,25 +1,32 @@
-import React from 'react';
+import React from "react";
 
 import { createContext, useContext, useState } from "react";
 
 type AuthContextType = {
-    registerUser:object[],
-    setregisterUser:React.Dispatch<React.SetStateAction<object[]>>
-}
+  userData: UserDataType;
+  setUserData: React.Dispatch<React.SetStateAction<UserDataType>>;
+};
+
+type UserDataType = {
+  email: string;
+  password: string;
+};
 
 const authContext = createContext({} as AuthContextType);
 const useAuth = () => useContext(authContext);
 
-type registerUserType = object; 
+const AuthProvider = ({ children }: any) => {
+  const [userData, setUserData] = useState<UserDataType>(
+    JSON.parse(localStorage.getItem("userDetail") || "{}") || {
+      email: "",
+      password: "",
+    }
+  );
+  return (
+    <authContext.Provider value={{ userData, setUserData }}>
+      {children}
+    </authContext.Provider>
+  );
+};
 
-const AuthProvider = ({children} : any) => {
-  const [registerUser, setregisterUser] = useState<registerUserType[]>([])
-
-    return(
-        <authContext.Provider value={{registerUser, setregisterUser}}>
-            {children}
-        </authContext.Provider>
-    )
-}
-
-export {AuthProvider, useAuth, authContext};
+export { AuthProvider, useAuth, authContext };
