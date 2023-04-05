@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home/Home";
+import {Home} from "./pages/Home/Home";
 import { Login } from "./pages/Login/Login";
 import Stories from "./components/Stories/Stories";
 import { Admin } from "./pages/Admin/Admin";
@@ -20,10 +20,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route
-          path="/"
-          element={Email ? <Home /> : <Navigate replace to={"/login"} />}
-        /> */}  <Route path='/projects' element={<Stories/>}/>
+        <Route path='/projects/:projectId' element={<Stories/>}/>
 
       </Routes>
     </div>

@@ -2,24 +2,25 @@ import React from "react";
 // import { ArticleCard } from "../../components/Cards/Cards";
 import { useNavigate } from "react-router-dom";
 import { PNG } from "../../Assets";
-
 import "./Home.css";
 import { Sidebar } from "../../components/sidebar/Sidebar";
-import { Navbar } from "../../components/Navbar/Navbar";
 
 type DESC = {
   description: string;
   img: string;
   stories: any;
 };
+
+
+const projectData = [{id:"123", description:'CarShip.app',stories:"556 Total Stories"}, {id:"456", description:'PEPtlk',stories:"556 Total Stories"}]
+
 export const ArticleSection = ({ description, img, stories }: DESC) => {
-  const navigate = useNavigate();
 
   return (
     <div className="cardDiv">
-      <div className="card"  onClick={() => navigate("/projects")}>
+      <ArticleCard hoverable >
         <div className="cardImg">
-          <img src={img} alt="" />
+          <img src={img} alt="logo" />
         </div>
         <div className="cardDesc">
           
@@ -31,41 +32,46 @@ export const ArticleSection = ({ description, img, stories }: DESC) => {
           <div className="greyText greycardName">{stories}</div>
           
           </div>
-        </div>
       
      </div>
   );
 };
 
 const Home = () => {
+
+const navigate = useNavigate();
+
   return (
     <div className="homeDiv">
       <div>
         <Sidebar />
       </div>
       <div className="homePage">
-        <Navbar />
-        <div className="grid-container1">
-          <div className="grid-item1" data-testid='CarShipapp'>
-            <ArticleSection
-              description={" CarShip.app"}
-              stories={"486 Total Stories"}
+        <ul className="grid-container1 list">
+         {projectData.map(({id, description, stories}) => {
+            return(
+              <li className="grid-item1" data-testid='project' key={id} onClick={() => navigate(`/projects/${id}`)}>
+              <ArticleSection
+              description={description}
+              stories={stories}
               img={PNG.VUE}
-              // onClick={()=>navigate("/detail")}
-            />
-          </div>
-          <div className="grid-item1">
+              />
+            </li>
+              )
+            })
+          }
+          {/* <div className="grid-item1">
             <ArticleSection
               description={"PEPtlk"}
               stories={"556 Total Stories"}
               img={PNG.VUE}
               //   icon={PNG.AUTHOR}
             />
-          </div>
-        </div>
+          </div> */}
+        </ul>
       </div>
     </div>
   );
 };
 
-export default Home;
+export {Home, projectData};

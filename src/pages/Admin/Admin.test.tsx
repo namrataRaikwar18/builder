@@ -8,7 +8,7 @@ describe("testing Admin page", () => {
     render(
       <BrowserRouter>
         <authContext.Provider
-          value={{ registerUser: [], setregisterUser: jest.fn() }}
+          value={{ userData: {email:"", password:""}, setUserData: jest.fn() }}
         >
           <Admin />
         </authContext.Provider>
