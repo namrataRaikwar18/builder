@@ -7,7 +7,6 @@ import Stories from "./components/Stories/Stories";
 import { Admin } from "./pages/Admin/Admin";
 import { MyAccount } from "./components/MyAccount/MyAccount";
 import { Toaster } from "react-hot-toast";
-import { StoryPopup } from "./components/StoryPopup/StoryPopup";
 function App() {
   
   return (
@@ -15,7 +14,6 @@ function App() {
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route path="/myaccount" element={<MyAccount />} />
-        <Route path="/storypopup" element={<StoryPopup />} />
 
         <Route path="/admin" element={<Admin />} />
         <Route path="/" element={<Login />} />
