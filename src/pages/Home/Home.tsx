@@ -1,5 +1,4 @@
 import React from "react";
-// import { ArticleCard } from "../../components/Cards/Cards";
 import { useNavigate } from "react-router-dom";
 import { PNG } from "../../Assets";
 import "./Home.css";
@@ -17,22 +16,22 @@ const projectData = [{id:"123", description:'CarShip.app',stories:"556 Total Sto
 export const ArticleSection = ({ description, img, stories }: DESC) => {
 
   return (
-    <div className="cardDiv">
-      <ArticleCard hoverable >
-        <div className="cardImg">
+    <div className="">
+      <div className="cardImg">
+
           <img src={img} alt="logo" />
-        </div>
-        <div className="cardDesc">
+      </div>
+        
+        <div className="cardDiv">
           
             <p className="avatar">A</p>
             <div className="cardNameWithDivider">
             <p className="divider"></p>
             <div className="cardName">{description}</div>
+          <div className="greyText cardName ">{stories}</div>
           </div>
-          <div className="greyText greycardName">{stories}</div>
           
           </div>
-      
      </div>
   );
 };
@@ -60,14 +59,7 @@ const navigate = useNavigate();
               )
             })
           }
-          {/* <div className="grid-item1">
-            <ArticleSection
-              description={"PEPtlk"}
-              stories={"556 Total Stories"}
-              img={PNG.VUE}
-              //   icon={PNG.AUTHOR}
-            />
-          </div> */}
+          
         </ul>
       </div>
     </div>

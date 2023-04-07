@@ -3,6 +3,7 @@ import React from "react";
 type TodoDetailType = {
   title: string;
   description: string;
+  
 };
 
 type CreateTodoModalType = {

@@ -1,7 +1,6 @@
-import React from "react";
-import ReadMore from "../../Assets/ReadMore/ReadMore";
+import React, { useState } from "react";
+import { ReadMore } from "../../Assets/ReadMore/ReadMore";
 import "./Stories.css";
-// import { Progress } from "antd";
 import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
@@ -13,298 +12,173 @@ import { GoTasklist } from "react-icons/go";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Navbar } from "../Navbar/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import { StoryPopup } from "../StoryPopup/StoryPopup";
+import { CreateStoryModal } from "../CreateStory/CreateStoryModal";
 const Stories = () => {
+  const [readMore, setReadMore] = useState(false);
+
+  const [storyModal, setStoryModal] = useState<boolean>(false);
+
+  // const todoListFromLocal =  JSON.parse(localStorage.getItem("todoList") || '[]')
+
+  const [storyList, setStoryList] = useState<object[]>(
+    JSON.parse(localStorage.getItem("storyList") || "[]")
+  );
   const navigate = useNavigate();
+  const todoList = JSON.parse(localStorage.getItem("todoList") || "[]");
 
+  const readMoreHandler = (todoListTitle: string) => {
+    const checkTitle = todoList.filter(
+      (todo: any) => todo.title  == todoListTitle
+    );
+
+    // console.log(checkTitle)
+    // console.log(todoListTitle)
+    if (checkTitle) {
+      setReadMore(true);
+    }
+
+    return checkTitle;
+  };
   return (
-    <div className="story_flex">
-      <Sidebar />
-      <div className="storyBoard-block">
-        <Navbar />
-        <div className="flex">
-          <div className="storyBoard-title">Stories</div>
-          <div className="storyBoardSearch input ">
-          <div className="trackedHour-info">
-            <span className="iconb-info">
-              <FilterOutlined />
-            </span>
-            <span className="trackedHour-detail"> 4 Filters</span>
+    <main>
+      {storyModal ? (
+        <CreateStoryModal
+          setStoryModal={setStoryModal}
+          storyModal={storyModal}
+          storyList={storyList}
+          setStoryList={setStoryList}
+        />
+      ) : null}
+      <div className="story_flex">
+        <Sidebar />
+        <div className="storyBoard-block">
+          <Navbar />
+
+          <div className="story-header">
+            <div className="storyBoard-title">Stories </div>
+
+            <button
+              className="btn primaryBtn"
+              onClick={() => setStoryModal(!storyModal)}
+            >
+              Create Story
+            </button>
+
+           
           </div>
-            {/* <div className="searchArea-block">
-              <SearchOutlined className="searchArea-blocks" />
-            </div> */}
-          </div>
-          
-          {/* <div className="trackedHour-info">
-            <span className="iconb-info">
-              <ArrowLeftOutlined />
-            </span>
-            <span className="iconb-info">
-              <ArrowRightOutlined />
-            </span>
-            <span className="trackedHour-detail">7 Views</span>
-          </div>
-          <div className="trackedHour-info">
-            <span className="trackedHour-detail">275:41:46</span>
-            <span className="iconb-info">
-              <InfoCircleOutlined />
-            </span>
-          </div>
-          <div className="trackedHour-info">
-            <span className="trackedHour-detail">169:07:46</span>
-            <span className="iconb-info">
-              <InfoCircleOutlined />
-            </span>
-          </div>
-          <a className="ideButton input" href="">
-            <GoTasklist /> Go to Buildcard IDE
-          </a> */}
-        </div>
-        <div className="storyBoard-columnWrapper">
-          <div className="storyBoard">
-            <div className="storyBoard-column">
-              <div className="head">
-                <span className="toggle-title">Features</span>
-                <div className="featureStatus-toggle">
-                  <button type="button" className="epicStatus-title p">
-                    Status
-                  </button>
-                  <div className="epicStatus p">
-                    <span className="toggleCircle"></span>
-                  </div>
-                  <button type="button" className="epicStatus-title">
-                    Estimate
-                  </button>
-                </div>
-              </div>
-              <div className="epiccolumn">
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Admin Console</div>
 
-                        <ReadMore />
-                        <div>
-                          {/* <Progress percent={35} strokeColor="#35C83B" /> */}
+          {/* ************************STORY *********** */}
+          <div className="storyBoard-columnWrapper">
+            <div className="storyBoard">
+              <div className="storyBoard-column">
+                <div className="head">
+                  <span className="toggle-title">Features</span>
+                  <div className="featureStatus-toggle">
+                    <button type="button" className="epicStatus-title p">
+                      Status
+                    </button>
+                    <div className="epicStatus p">
+                      <span className="toggleCircle"></span>
+                    </div>
+                    <button type="button" className="epicStatus-title">
+                      Estimate
+                    </button>
+                  </div>
+                </div>
+                <div className="epiccolumn">
+                  <div className="epic">
+                    <div className="  cursorPointer">
+                      <div className="maincard-Top">
+                        <div className="epic-details">
+                          
+                          <div className="title">
+                            <ul className="">
+                              {storyList.map((story: any) => {
+                                return (
+                                  <li
+                                    key={story.title}
+                                    className="epic-content "
+                                  >
+                                    <p className="title">{story.title}</p>
+                                    
+                                    <div className="greyText">
+                                   <ReadMore desc={story.description} />
+                                   </div>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Bulk Uplpoading</div>
+              </div>
+              {/* *****************TO DO **************** */}
+              <div className="storyBoard-column">
+                <div className="head">
+                  <span className="toggle-title">To Do</span>
+                </div>
+                <div className="epiccolumn">
+                  <div className="epic">
+                    {/* <div className="cursorPointer">
+                      <div className="maincard-Top"> */}
+                        <div className="epic-details">
+                          
+                          <div className="title">
+                            <ul className="todo_styling">
+                              {todoList.map((todo: any) => {
+                                return (
+                                  <li
+                                    key={todo.title}
+                                    className="epic-content cursorPointer "
+                                  >
+                                    <p className="title">{todo.title}</p>
+                                    <div className="greyText">
+                                     
+                                    <ReadMore desc={todo.description} />
 
-                        <ReadMore />
-                        <div>
-                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Bulk Uplpoading</div>
-                        <li  onClick={() => navigate("/storypopup")}>
+                                    </div>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
 
-                        <ReadMore />
-                        </li>
-                        
-                        <div>
-                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
+                          
                         </div>
-                      </div>
-                    </div>
+                      {/* </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="storyBoard-column">
-              <div className="head">
-                <span className="toggle-title">To Do</span>
+             {/* **************QA********* */}
+              <div className="storyBoard-column">
+                <div className="head">
+                  <span className="toggle-title">QA</span>
+                </div>
               </div>
-              <div className="epiccolumn">
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Bulk Uplpoading</div>
 
-                        <ReadMore />
-                        <div>
-                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Bulk Uplpoading</div>
+             {/* **************REJECTED********* */}
 
-                        <ReadMore />
-                        <div>
-                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="storyBoard-column">
+                <div className="head">
+                  <span className="toggle-title">Rejected</span>
                 </div>
               </div>
-            </div>
-            <div className="storyBoard-column">
-              <div className="head">
-                <span className="toggle-title">In Progress</span>
-              </div>
-              <div className="epiccolumn">
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Admin Console</div>
-                        <div className="briefDescription">
-                          <span className="briefDescription">
-                            Upload multiple files to the product.Saves users
-                            time compared to uploading one file at a time.
-                          </span>
-                          <span className="moreOption">more</span>
-                        </div>
-                        <div>
-                          {/* <Progress /> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              {/* **************ACCEPTED************* */}
+              <div className="storyBoard-column">
+                <div className="head">
+                  <span className="toggle-title">Accepted</span>
                 </div>
               </div>
-            </div>
-            <div className="storyBoard-column">
-              <div className="head">
-                <span className="toggle-title">QA</span>
-              </div>
-            </div>
-            <div className="storyBoard-column">
-              <div className="head">
-                <span className="toggle-title">Rejected</span>
-              </div>
-            </div>
-            <div className="storyBoard-column">
-              <div className="head">
-                <span className="toggle-title">Accepted</span>
-              </div>
-            </div>
-            <div className="storyBoard-column">
-              <div className="head">
-                <span className="toggle-title">Archieve</span>
-              </div>
-              <div className="epiccolumn">
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Bulk Uplpoading</div>
-
-                        <ReadMore />
-                        <div>
-                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Bulk Uplpoading</div>
-                        {/* <div className="briefDescription">
-                  <span className="briefDescription">
-                  Upload multiple files to the product.Saves users time compared to uploading one file at a time.
-                  </span>
-                  <span className="moreOption">more</span>
-                </div> */}
-                        <ReadMore />
-                        <div>
-                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="epic">
-                  <div className="epic-content cursorPointer">
-                    <div className="maincard-Top">
-                      <div className="featureStatus ongoing_customisation">
-                        <span className="featureState-name">
-                          Ongoing Customization
-                        </span>
-                      </div>
-                      <div className="epic-details">
-                        <div className="title">Bulk Uplpoading</div>
-
-                        <ReadMore />
-                        <div>
-                          {/* <Progress percent={90} strokeColor="#35C83B" /> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 export default Stories;

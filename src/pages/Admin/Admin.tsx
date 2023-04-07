@@ -27,7 +27,7 @@ const Admin = () => {
     }else{
       todoList.push(todoDetail);
       setTodoList([...todoList]);
-      setTodoDetail({ title: "", description: "" });
+      setTodoDetail({ title: "", description: ""});
       localStorage.setItem("todoList", JSON.stringify(todoList));
       setCreateTodoModal(false);
     }
