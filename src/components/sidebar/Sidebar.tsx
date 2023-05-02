@@ -35,6 +35,9 @@ const Sidebar = () => {
 
   const logoutHandler = () => {
     localStorage.removeItem("userDetail");
+    localStorage.removeItem("registeredUser");
+    localStorage.removeItem("todoList");
+    localStorage.removeItem("storyList");
     setUserData({ email: "", password: "" });
     navigate("/");
     toast.success("Loggedout Successfully.");
