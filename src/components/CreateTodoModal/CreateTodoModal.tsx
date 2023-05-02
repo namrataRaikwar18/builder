@@ -3,37 +3,34 @@ import React from "react";
 type TodoDetailType = {
   title: string;
   description: string;
-  
 };
 
 type CreateTodoModalType = {
   setCreateTodoModal: React.Dispatch<React.SetStateAction<boolean>>;
   todoDetail: TodoDetailType;
   setTodoDetail: React.Dispatch<React.SetStateAction<TodoDetailType>>;
-  createTodoHandler: () => void;
+  postData: () => void;
 };
 
 const CreateTodoModal = ({
   setCreateTodoModal,
   todoDetail,
   setTodoDetail,
-  createTodoHandler,
+  postData,
 }: CreateTodoModalType) => {
-  const closeCreateTodo = () => {
-    setCreateTodoModal(false);
-  };
-
   return (
-    <main className="chPswdModalMain" onClick={closeCreateTodo}>
+    <main className="chPswdModalMain" onClick={() => setCreateTodoModal(false)}>
       <div className="createTodoModal" onClick={(e) => e.stopPropagation()}>
         <h2>Create Todo</h2>
         <label htmlFor="title" className="modalLabel">
           Title
           <input
+            data-testid="title"
             id="title"
             type="text"
             className="informationInput"
             required
+            placeholder="write title"
             onChange={(e) =>
               setTodoDetail({ ...todoDetail, title: e.target.value })
             }
@@ -42,6 +39,7 @@ const CreateTodoModal = ({
         <label htmlFor="Description" className="modalLabel">
           Description
           <textarea
+            placeholder="start writing description"
             name=""
             id="Description"
             className="informationInput"
@@ -51,7 +49,7 @@ const CreateTodoModal = ({
             }
           ></textarea>
         </label>
-        <button className="btn primaryBtn" onClick={() => createTodoHandler()}>
+        <button className="btn primaryBtn" onClick={() => postData()}>
           Create
         </button>
       </div>

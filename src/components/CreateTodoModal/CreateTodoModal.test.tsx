@@ -11,7 +11,7 @@ describe("testing createTodoModal", () => {
           description: "",
         }}
         setTodoDetail={jest.fn()}
-        createTodoHandler={jest.fn()}
+        postData={jest.fn()}
       />
     );
 
