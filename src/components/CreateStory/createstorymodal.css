@@ -4,3 +4,52 @@
     /* background-color: brown; */
 
 }
+.createTodoModal {
+    gap: 14px;
+    padding: 40px;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.informationInput {
+    padding: 13px;
+    border-radius: 4px;
+    border: 1px solid var(--light-divider);
+    background-color: #f6f6f6;
+    outline: none;
+    color: var(--input-color);
+    width: 20rem;
+}
+@media only screen and (max-width: 400px) and (min-width: 200px)  {
+    .createTodoModal {
+        gap: 14px;
+        padding: 0px;
+        align-items: center;
+        background-color: white;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        top: 50%;
+        border-radius: 8px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .informationInput {
+        padding: 13px;
+        border-radius: 4px;
+        border: 1px solid var(--light-divider);
+        background-color: #f6f6f6;
+        outline: none;
+        color: var(--input-color);
+        width: 15rem;
+    }
+
+}

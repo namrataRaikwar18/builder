@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PNG } from "../../Assets";
 import "./Home.css";
 import { Sidebar } from "../../components/sidebar/Sidebar";
+import { getStoryList } from "../../components/Stories/Stories";
 
 type DESC = {
   description: string;
@@ -39,6 +40,11 @@ export const ArticleSection = ({ description, img, stories }: DESC) => {
 const Home = () => {
 
 const navigate = useNavigate();
+
+useEffect(() => {
+  getStoryList();
+  // getTodoList();
+}, []);
 
   return (
     <div className="homeDiv">
