@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ChangePswdModal } from "../ChangePswdModal/ChangePswdModal";
-import { Navbar } from "../Navbar/Navbar";
 import { Sidebar } from "../sidebar/Sidebar";
 import "./MyAccount.css";
 

@@ -1,15 +1,28 @@
-import { render, screen } from "@testing-library/react";
-
+import { screen } from "@testing-library/react";
+import { render} from "@testing-library/react";
 import Stories from "./Stories";
-describe("Stories testing", () => {
-  test("should present stories ", () => {
-    render(<Stories />);
-    const Story = screen.getByText(/Go to Buildcard /i);
-    expect(Story).toBeInTheDocument();
-  });
-  test("should Present Feature ", () => {
-    render(<Stories />);
-    const Feature = screen.getByText(/Stories /i);
-    expect(Feature).toBeInTheDocument();
-  });
+import { BrowserRouter } from "react-router-dom";
+import { authContext } from "../../context/authContext";
+
+describe("testing sidebar component", () => {
+  test("should render Stories ", () => {
+    render(
+      <BrowserRouter>
+      <authContext.Provider
+        value={{ userData: {email:"", password:""}, setUserData: jest.fn() }}
+      >
+        <Stories />
+      </authContext.Provider>
+      </BrowserRouter>
+    );
+    
+  const Create_Story = screen.getByRole("button", { name: /create story/i});
+      expect(Create_Story).toBeInTheDocument();
+
+  const Element = screen.getByText(/features/i)    
+   expect(Element).toBeInTheDocument();
+})
 });
+
+
+

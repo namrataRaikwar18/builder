@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { PNG } from "../../Assets";
 import "./Home.css";
 import { Sidebar } from "../../components/sidebar/Sidebar";
+import { getStoryList } from "../../components/Stories/Stories"
 import { getTodoList } from "../../pages/Admin/Admin";
 
 type DESC = {
@@ -47,6 +48,11 @@ const Home = () => {
   useEffect(() => {
     getTodoList();
   }, []);
+
+useEffect(() => {
+  getStoryList();
+  getTodoList();
+}, []);
 
   return (
     <div className="homeDiv">

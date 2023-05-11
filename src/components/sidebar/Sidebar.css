@@ -14,7 +14,40 @@
     position: sticky;
     top: 0;
 }
-
+@media only screen and (max-width: 400px) and (min-width: 200px)  {
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--light-divider);
+        width: 122px;
+        height: 100vh;
+        padding: 20px;
+        background-color: #fff;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+    }
+    .sidebarMiddlePart {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
+        gap: 10rem;
+    }
+    .signalProject{
+        padding: 0 0 0 0px ;
+    }
+    .eachSidebarList {
+        display: flex;
+        gap: 5px;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        padding: 1rem 0rem 1rem 0rem;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    
+    
+}
 .avatar {
     display: flex;
     align-items: center;
@@ -61,7 +94,7 @@
     gap: 10px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    padding: 1rem 2rem 1rem 1rem;
+    padding: 1rem 0rem 1rem 0rem;
     border-radius: 3px;
     text-decoration: none;
 }
@@ -81,7 +114,7 @@
 .sidebarMiddlePart {
     display: flex;
     flex-direction: column;
-    padding-left: 2rem;
+    padding-left: 1rem;
     gap: 19rem;
 }
 
@@ -109,7 +142,7 @@
 }
 
 .signalProject{
-    padding: 0 0 0 20px ;
+    padding: 0 0 0 0px ;
 }
 
 

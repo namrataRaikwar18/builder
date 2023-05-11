@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { AiOutlineStar, AiOutlineBell } from "react-icons/ai";
+import { AiOutlineStar} from "react-icons/ai";
 import { NotificationBar } from "../NotificationBar/NotificationBar";
 import { projectData } from "../../pages/Home/Home";
 import { useParams } from "react-router";

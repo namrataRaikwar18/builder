@@ -120,7 +120,14 @@
 
 /* ****************************** */
 @media only screen and (max-width: 480px) {
+  .cardDiv {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 150px;
+    height: 80%;
   
+  }
 
   .flex {
     display: flex;
@@ -136,7 +143,7 @@
   .grid-item {
     background-color: #EFF0F3;
     padding: 20px;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     overflow: hidden;
   }
@@ -151,7 +158,7 @@
   .grid-item1 {
     background-color: white;
     padding: 20px;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     display:flex;
     justify-content: center;
