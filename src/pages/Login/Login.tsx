@@ -1,29 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import toast from "react-hot-toast";
+import axios from "axios";
 
+const getRegisterUser = async (
+  setregisterUser: React.Dispatch<React.SetStateAction<string[]>>
+) => {
+  try {
+    const res = await axios.get(
+      "https://builder-e72c1-default-rtdb.firebaseio.com/registerUser.json"
+    );
+    setregisterUser([...res.data.registerUser]);
+    localStorage.setItem(
+      "registeredUser",
+      JSON.stringify(res.data.registerUser)
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
 const Login = () => {
   const { userData, setUserData } = useAuth();
   const { email, password } = userData;
 
-  const [registerUser, setregisterUser] = useState<string[]>(JSON.parse(localStorage.getItem('registeredUser') || '[]'));
+  const [registerUser, setregisterUser] = useState<string[]>([]);
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getRegisterUser(setregisterUser);
+  }, []);
 
-  const registerUserHandler = (email:string) => {
-    const checkingUser = registerUser.some((user) => user === email )
-    if(checkingUser){
-      setregisterUser([...registerUser])
-    }
-    else{
-      registerUser.push(email)
-      setregisterUser([...registerUser])
+  const registerUserHandler = async (email: string) => {
+    const checkingUser = registerUser.some((user) => user === email);
+    if (checkingUser) {
+      setregisterUser([...registerUser]);
       localStorage.setItem("registeredUser", JSON.stringify(registerUser));
+    } else {
+      console.log(registerUser, "register user");
+      registerUser.push(email);
+      setregisterUser([...registerUser]);
+      try {
+        const res = await axios.put(
+          "https://builder-e72c1-default-rtdb.firebaseio.com/registerUser.json",
+          { registerUser },
+          { headers: { "Content-Type": "application/json" } }
+        );
+        console.log(res, "register");
+        localStorage.setItem(
+          "registeredUser",
+          JSON.stringify(res.data.registerUser)
+        );
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
+  };
 
   const signInHandler = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -51,7 +85,6 @@ const Login = () => {
     }
   };
 
-
   return (
     <main className="loginMain">
       {/* <img
@@ -78,7 +111,7 @@ const Login = () => {
           />
           <label htmlFor="password">Password</label>
           <input
-          required
+            required
             type="password"
             placeholder="Password"
             value={password}
@@ -102,4 +135,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { Login, getRegisterUser };
